@@ -1,2 +1,2 @@
 # Bulletin-Board
-Demonstrating to challenges of express framework
+Demonstrating challenges of express framework
