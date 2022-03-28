@@ -6,11 +6,4 @@ block content
   input(type="text")
   button(type="button", onclick="send().then(d=> console.log(d))") Send
   ul(style="list-style: none;")
-    each notice,i in notices
-      li
-        - var command = "eras('" + i + "').then(d=> console.log(d))"
-        button(type="button", onclick=command) -
-        span #{notice}
-    else
-      li There are no notices
   script(src='javascripts/main.js')
