@@ -7,7 +7,13 @@ function reload() {
   //fetch('http://localhost:3000/blobs').then(x => x.text()).then(y=>ul.replaceChildren(y))
   fetch('http://localhost:3000/blobs')
     .then(x => x.json())
-    .then(y => y.map((v,i) =>{
+    .then(y => {
+      if(y.length == 0) {
+        li = document.createElement("li");
+        li.innerText = "There are no notices";
+        return [li]; // z consumes array
+      }
+      return y.map((v,i) =>{
         c = document.createElement("button");
         c.innerText = '-';
         c.onclick = function() {
@@ -19,8 +25,9 @@ function reload() {
         li.appendChild(c);
         li.appendChild(p);
         return li;
-      })
-    ).then(z => {
+      });
+    })
+    .then(z => {
         ul.replaceChildren();
         z.map(v => {ul.appendChild(v)})
     })
